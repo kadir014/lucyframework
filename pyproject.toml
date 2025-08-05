@@ -1,0 +1,29 @@
+[project]
+name = "lucyframework"
+description = "Toy, personal framework built on Pygame"
+version = "0.0.1"
+readme = "README.md"
+authors = [
+    {name="Kadir Aksoy"}
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Topic :: Games/Entertainment",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: pygame",
+]
+dependencies = [
+    "pygame-ce",
+]
+requires-python = ">=3.10"
+
+[project.scripts]
+lucyframework_example = "example.__main__:main"
+
+[project.urls]
+homepage = "https://github.com/kadir014/lucyframework"
+bugtracker = "https://github.com/kadir014/lucyframework/issues"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
