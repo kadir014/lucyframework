@@ -26,11 +26,11 @@ class Scene:
     def __init__(self) -> None:
         self.camera = pygame.Vector2(0)
 
-        self.entities = []
+        self.entities = set()
 
     def add_entity(self, entity: "Entity") -> None:
         """ Add entity to the scene. """
-        self.entities.append(entity)
+        self.entities.add(entity)
 
     def remove_entity(self, entity: "Entity") -> None:
         """ Remove entity from the scene. """

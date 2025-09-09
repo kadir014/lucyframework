@@ -32,7 +32,8 @@ class App:
             window_size: tuple[int, int],
             target_fps: int = 60,
             vsync_mode: VSyncMode = VSyncMode.NONE,
-            clear_color: pygame.typing.ColorLike = (0, 0, 0)
+            clear_color: pygame.typing.ColorLike = (0, 0, 0),
+            opengl: bool = False
             ) -> None:
         """
         Parameters
@@ -45,6 +46,8 @@ class App:
             Vertical sync mode to use at window creation.
         clear_color
             Color to fill the display each frame.
+        opengl
+            Create the display with OpenGL flags.
         """
         pygame.init()
 
@@ -69,7 +72,7 @@ class App:
         self.vsync_mode = vsync_mode
         self.clear_color = clear_color
         self.window_width, self.window_height = window_size
-        self.create_window()
+        self.create_window(opengl=opengl)
 
         self.scenes = {}
         self.__current_scene = ""
@@ -98,12 +101,23 @@ class App:
         self.__window_title = new_title
         pygame.display.set_caption(self.__window_title)
 
-    def create_window(self) -> None:
-        """ Create window with the current resolution. """
+    def create_window(self, opengl: bool = False) -> None:
+        """
+        Create window with the current resolution.
+        
+        Parameters
+        ----------
+        opengl
+            Create the display with OpenGL flags.
+        """
+
+        flags = 0
+        if opengl: flags = pygame.OPENGL | pygame.DOUBLEBUF
         
         self.display = pygame.display.set_mode(
             (self.window_width, self.window_height),
-            vsync=self.vsync_mode.value
+            vsync=self.vsync_mode.value,
+            flags=flags
         )
 
     @property
