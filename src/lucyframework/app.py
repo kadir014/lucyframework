@@ -101,6 +101,16 @@ class App:
         self.__window_title = new_title
         pygame.display.set_caption(self.__window_title)
 
+    @property
+    def window_frect(self) -> pygame.FRect:
+        """ Window dimensions as an FRect. """
+        return pygame.FRect(0.0, 0.0, self.window_width, self.window_height)
+    
+    @property
+    def window_rect(self) -> pygame.FRect:
+        """ Window dimensions as a Rect. """
+        return pygame.Rect(0, 0, self.window_width, self.window_height)
+
     def create_window(self, opengl: bool = False) -> None:
         """
         Create window with the current resolution.
