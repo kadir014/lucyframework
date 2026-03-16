@@ -1,7 +1,7 @@
 [project]
 name = "lucyframework"
 description = "Toy, personal framework built on Pygame"
-version = "0.0.3"
+version = "0.1.0"
 readme = "README.md"
 authors = [
     {name="Kadir Aksoy"}
@@ -19,7 +19,8 @@ dependencies = [
 requires-python = ">=3.10"
 
 [project.scripts]
-lucyframework_example = "example.__main__:main"
+lucyfw_example = "example.__main__:main"
+lucyfw_init = "lucyframework.init:init"
 
 [project.urls]
 homepage = "https://github.com/kadir014/lucyframework"
