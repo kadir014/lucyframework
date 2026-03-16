@@ -14,6 +14,15 @@ import pygame
 class InputManager:
     """
     Input manager class.
+
+    Attributes
+    ----------
+    mouse
+        Mouse position
+    mouse_rel
+        Relative mouse position to last frame
+    min_drift_threshold
+        Minimum amount of drift allowed to not register joystick movement
     """
 
     def __init__(self) -> None:
@@ -24,12 +33,17 @@ class InputManager:
         self.mouse = pygame.Vector2(0)
         self.mouse_rel = pygame.Vector2(0)
 
-        self.get_joysticks()
+        self.fetch_joysticks()
 
         self.min_drift_threshold = 0.01
 
-    def get_joysticks(self) -> None:
-        """ Get all current joystick devices. """
+    def fetch_joysticks(self) -> None:
+        """
+        Get all current joystick devices.
+        
+        You might want to call this to update internal state if any device is
+        plugged or unplugged during application runtime.
+        """
         self.__joysticks = [pygame.Joystick(i) for i in range(pygame.joystick.get_count())]
 
     def update(self, events: list[pygame.Event]) -> None:
@@ -107,21 +121,25 @@ class InputManager:
     def get_stick(self, index: int = 0, device: int = 0) -> pygame.Vector2:
         """ Return the normalized stick axis at given index. """
 
-        if len(self.__joysticks) == 0: return pygame.Vector2(0)
+        if len(self.__joysticks) == 0:
+            return pygame.Vector2(0.0)
 
         axis = self.get_stick_raw(index, device)
         length = axis.length_squared()
 
-        if length > 1.0: axis.normalize_ip()
+        if length > 1.0:
+            axis.normalize_ip()
 
-        if length < self.min_drift_threshold: axis = pygame.Vector2(0)
+        if length <= self.min_drift_threshold:
+            axis = pygame.Vector2(0.0)
 
         return axis
         
     def get_stick_raw(self, index: int = 0, device: int = 0) -> pygame.Vector2:
         """ Return the raw stick axis at given index. """
 
-        if len(self.__joysticks) == 0: return pygame.Vector2(0)
+        if len(self.__joysticks) == 0:
+            return pygame.Vector2(0.0)
 
         return pygame.Vector2(
             self.__joysticks[device].get_axis(index * 2),

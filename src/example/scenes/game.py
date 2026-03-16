@@ -21,8 +21,8 @@ class Game(Scene):
 
         self.font = pygame.Font(None, 35)
 
-    def deactivated(self) -> None:
-        print("Game scene is deactivated.")
+    def deactivated(self, next_scene: str) -> None:
+        print(f"Game scene is deactivated. Next is {next_scene}.")
 
     def activated(self, previous_scene: str) -> None:
         print(f"Game scene is active! Previous was {previous_scene}.")

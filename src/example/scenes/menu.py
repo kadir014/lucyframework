@@ -21,14 +21,14 @@ class Menu(Scene):
 
         self.font = pygame.Font(None, 50)
 
-    def deactivated(self) -> None:
-        print("Menu scene is deactivated.")
+    def deactivated(self, next_scene: str) -> None:
+        print(f"Menu scene is deactivated. Next is {next_scene}.")
 
     def activated(self, previous_scene: str) -> None:
         print(f"Menu scene is active! Previous was {previous_scene}.")
 
     def update(self) -> None:
-        shared.app.window_title = f"Example app  -  fps: {round(shared.app.profiler['fps'].avg, 1)}"
+        shared.app.window_title = f"Example app  -  fps: {round(shared.app.fps, 1)}"
 
         if shared.app.input.key_pressed("escape"):
             shared.app.stop()

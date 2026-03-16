@@ -24,6 +24,7 @@ class VSyncMode(Enum):
     ADAPTIVE
         OpenGL's adaptive sync mode.
     """
+
     NONE = 0
     CONSTANT = 1
     ADAPTIVE = -1

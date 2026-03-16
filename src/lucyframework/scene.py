@@ -38,7 +38,7 @@ class Scene:
 
     def activated(self, previous_scene: str) -> None:
         """
-        Scene activated callback.
+        Callback called whenever this scene is activated.
         
         You can implement this method in your subclass.
 
@@ -47,13 +47,20 @@ class Scene:
         previous_scene
             Name of the previous scene, empty if none.
         """
+        ...
 
-    def deactivated(self) -> None:
+    def deactivated(self, next_scene: str) -> None:
         """
-        Scene deactivated.
+        Callback called whenever this scene is deactivated.
         
         You can implement this method in your subclass.
+
+        Parameters
+        ----------
+        next_scene
+            Name of the next scene, empty if none.
         """
+        ...
 
     def update(self) -> None:
         """
@@ -61,6 +68,7 @@ class Scene:
         
         You can implement this method in your subclass.
         """
+        ...
 
     def render_before(self) -> None:
         """
@@ -68,6 +76,7 @@ class Scene:
         
         You can implement this method in your subclass.
         """
+        ...
 
     def render_after(self) -> None:
         """
@@ -75,3 +84,4 @@ class Scene:
         
         You can implement this method in your subclass.
         """
+        ...

@@ -1,7 +1,7 @@
 [project]
 name = "lucyframework"
 description = "Toy, personal framework built on Pygame"
-version = "0.0.2"
+version = "0.0.3"
 readme = "README.md"
 authors = [
     {name="Kadir Aksoy"}
@@ -14,6 +14,7 @@ classifiers = [
 ]
 dependencies = [
     "pygame-ce",
+    "miniprofiler>=0.0.2"
 ]
 requires-python = ">=3.10"
 

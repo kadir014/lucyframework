@@ -16,7 +16,7 @@ import multiprocessing
 
 def is_web() -> bool:
     """ Check if the application is running on web. """
-    return sys.platform.lower() in ("emscripten", "wasi")
+    return sys.platform.lower() in {"emscripten", "wasi"}
 
 
 def get_cpu_info() -> dict:

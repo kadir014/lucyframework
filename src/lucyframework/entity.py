@@ -41,6 +41,7 @@ class Entity:
         
         You can implement this method in your subclass.
         """
+        ...
 
     def render(self) -> None:
         """
@@ -48,3 +49,4 @@ class Entity:
         
         You can implement this method in your subclass.
         """
+        ...
