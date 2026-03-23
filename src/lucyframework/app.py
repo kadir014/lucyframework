@@ -34,8 +34,6 @@ class App:
         Targeted FPS cap
     dt_cap
         Maximum deltatime in seconds
-    master_volume
-        Global volume multiplier in range [0, 1]
     input
         Input manager
     monitor_width
@@ -91,8 +89,6 @@ class App:
         self._start_time = 0.0
         self._time = 0.0
 
-        self.master_volume = 1.0
-
         self.input = InputManager()
 
         display_info = pygame.display.Info()
@@ -109,7 +105,7 @@ class App:
         self.scenes: dict[str, Scene] = {}
         self._current_scene = ""
 
-        self.profiler = miniprofiler.Profiler(60)
+        self.profiler = miniprofiler.Profiler(target_fps)
 
     @property
     def events(self) -> list[pygame.Event]:
